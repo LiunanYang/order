@@ -20,6 +20,7 @@ export default {
   components:{
     NavHeader,
     NavTab
-  }
+  },
+
 }
 </script>

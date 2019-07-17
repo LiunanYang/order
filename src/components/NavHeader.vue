@@ -7,7 +7,7 @@
       <div class="content">
         <div class="title">
           <span class="brand"></span>
-          <span class="name"></span>
+          <span class="name">{{seller.name}}</span>
         </div>
         <div class="description"></div>
         <div class="support"></div>
@@ -15,7 +15,7 @@
     </div>
     <div id="signScroll">
       <span class="icon"></span>
-      <span class="text">{{signTitle}}</span>
+      <span class="text"></span>
     </div>
   </div>
 </template>
@@ -25,13 +25,13 @@ const ERR_OK = 0
 export default {
   data () {
     return {
-      seller:{},
-      signTitle:"粥品香坊其烹饪粥料的秘方源于中国千年的古法,粥品香坊其烹饪粥料的秘方源于中国千年的古法"
+      seller:{}
     }
   },
   create(){
     this.$http.get('/seller').then((res)=>{
-      this.seller = res.body.data
+      console.log(res.body.data)
+      this.seller = res
     })
   }
 }

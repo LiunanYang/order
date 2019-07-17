@@ -2,7 +2,7 @@
   "name": "order",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "yangliunan <1610252219@vip.henu.edu.cn>",
+  "author": "NydiaYoung <1152923548@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
