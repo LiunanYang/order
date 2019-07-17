@@ -23,6 +23,7 @@
 <script>
 const ERR_OK = 0
 export default {
+  // 开始拉 测试一下
   data () {
     return {
       seller:{}
