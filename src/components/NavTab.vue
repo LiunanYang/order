@@ -36,6 +36,7 @@ export default {
   .tab_item{
     flex: 1;
     font-size: 14px;
+    text-align: center;
   }
   .a{
     text-decoration: none;

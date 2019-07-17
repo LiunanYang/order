@@ -48,4 +48,9 @@ table {
 	border-spacing: 0;
 }
 
-/* css header */
+  /* classMap */
+.decrease{ background-image: url('../images/decrease_1@2x.png'); }
+.discount{ background-image: url('../images/discount_1@2x.png'); }
+.special{ background-image: url('../images/special_1@2x.png'); }
+.invoice{ background-image: url('../images/invoice_1@2x.png'); }
+.guarantee{ background-image: url('../images/guarantee_1@2x.png'); }
