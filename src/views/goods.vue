@@ -43,7 +43,7 @@
         </ul>
       </div>
     </div>
-    <shopcart></shopcart>
+    <shopcart :select-foods="selectFoods"></shopcart>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ import cartcontrol from '@/components/cartcontrol';
 export default {
   data() {
     return {
-      goods:{},
+      goods:[],
       classMap:["decrease","discount","special","invoice","guarantee"],
     };
   },
@@ -71,8 +71,20 @@ export default {
     this.$http.get("/seller").then((res)=>{
       this.goods = res.body.goods
     })
+  },
+  computed:{
+    selectFoods(){
+      let foods = []
+      this.goods.forEach((good)=>{
+        good.foods.forEach((food)=>{
+          if(food.count){
+            foods.push(food)
+          }
+        })
+      })
+      return foods
+    }
   }
-
 }
 </script>
 
