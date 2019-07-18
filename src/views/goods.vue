@@ -33,6 +33,9 @@
                     <span class="now">￥{{food.price}}</span>
                     <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                   </div>
+                  <div class="cartcontrol-wrapper">
+                    <cartcontrol :food="food"></cartcontrol>
+                  </div>
                 </div>
               </li>
             </ul>
@@ -40,6 +43,7 @@
         </ul>
       </div>
     </div>
+    <shopcart></shopcart>
   </div>
 </template>
 
@@ -47,6 +51,9 @@
 import '@/assets/css/common.css'
 import NavHeader from '@/components/NavHeader';
 import NavTab from '@/components/NavTab';
+import shopcart from '@/components/shopcart';
+import cartcontrol from '@/components/cartcontrol';
+
 export default {
   data() {
     return {
@@ -56,7 +63,9 @@ export default {
   },
   components:{
     NavHeader,
-    NavTab
+    NavTab,
+    shopcart,
+    cartcontrol
   },
   mounted(){
     this.$http.get("/seller").then((res)=>{
@@ -128,6 +137,7 @@ export default {
     border-bottom: 1px solid rgba(7,17,27,0.1);
     padding-bottom: 18px;
     /* background: white; */
+    position: relative;
   }
   #goods .foods-wrapper .food-item:last-child{
     border-bottom: 0px;
@@ -172,6 +182,12 @@ export default {
     font-size: 10px;
     color:rgb(147,153,159);
   }
+  #goods .foods-wrapper .food-item .cartcontrol-wrapper{
+    position: absolute;
+    right: 0;
+    bottom: 12px;
+  }
+
 </style>
 
 
