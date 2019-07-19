@@ -4,7 +4,7 @@
     <nav-header></nav-header>
     <nav-tab></nav-tab>
     <div id="goods">
-      <div class="menu-wrapper">
+      <div class="menu-wrapper" >
         <ul>
           <li v-for="item in goods" class="menu-item">
             <span class='text' >
@@ -13,12 +13,12 @@
           </li>
         </ul>
       </div>
-      <div class="foods-wrapper">
+      <div class="foods-wrapper" >
         <ul>
           <li v-for="item in goods">
             <h1 class="title">{{item.name}}</h1>
             <ul>
-              <li v-for="food in item.foods" class="food-item">
+              <li v-for="food in item.foods" class="food-item" @click="selectFood(food,$event)">
                 <div class="icon">
                   <img :src="food.icon" width="57" height="57" alt="">
                 </div>
@@ -43,29 +43,34 @@
         </ul>
       </div>
     </div>
+    <food :food="selectedFood" ref=food></food>
     <shopcart :select-foods="selectFoods"></shopcart>
   </div>
 </template>
 
 <script>
 import '@/assets/css/common.css'
+import BScroll from 'better-scroll'
 import NavHeader from '@/components/NavHeader';
 import NavTab from '@/components/NavTab';
 import shopcart from '@/components/shopcart';
 import cartcontrol from '@/components/cartcontrol';
+import food from '@/views/food';
 
 export default {
   data() {
     return {
       goods:[],
       classMap:["decrease","discount","special","invoice","guarantee"],
+      selectedFood:{}
     };
   },
   components:{
     NavHeader,
     NavTab,
     shopcart,
-    cartcontrol
+    cartcontrol,
+    food
   },
   mounted(){
     this.$http.get("/seller").then((res)=>{
@@ -83,6 +88,12 @@ export default {
         })
       })
       return foods
+    }
+  },
+  methods:{
+    selectFood(food,event){
+      this.selectedFood = food
+      this.$refs.food.show()
     }
   }
 }
