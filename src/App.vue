@@ -1,19 +1,23 @@
 <template>
   <div id="app">
+    <nav-header></nav-header>
+    <nav-tab></nav-tab>
     <router-view/>
   </div>
 </template>
 
 <script>
+import NavHeader from '@/components/NavHeader';
+import NavTab from '@/components/NavTab';
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    NavHeader,
+    NavTab
+  }
 }
 </script>
 
 <style>
-/* *{
-  line-height: 1;
-  font-weight: 200;
-  font-family: 'PingFang SC';
-} */
+
 </style>

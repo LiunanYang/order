@@ -10,7 +10,6 @@
     <div class="tab_item">
       <router-link to="/sellers" class="a">商家</router-link>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 

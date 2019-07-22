@@ -1,8 +1,6 @@
 <!--  -->
 <template>
   <div id=''>
-    <nav-header></nav-header>
-    <nav-tab></nav-tab>
     <div id="goods">
       <div class="menu-wrapper" >
         <ul>
@@ -51,8 +49,6 @@
 <script>
 import '@/assets/css/common.css'
 import BScroll from 'better-scroll'
-import NavHeader from '@/components/NavHeader';
-import NavTab from '@/components/NavTab';
 import shopcart from '@/components/shopcart';
 import cartcontrol from '@/components/cartcontrol';
 import food from '@/views/food';
@@ -66,8 +62,6 @@ export default {
     };
   },
   components:{
-    NavHeader,
-    NavTab,
     shopcart,
     cartcontrol,
     food
