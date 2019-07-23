@@ -28,8 +28,22 @@
     <div class='background'>
       <img :src="seller.avatar" width="100%" height="100%" alt="">
     </div>
-    <div class="detail" v-show="detailShow">
-
+    <div class="detail" v-show="detailShow" @click="hiddenDetail">
+      <h1 class="name">{{seller.name}}</h1>
+      <star class="star" :score="seller.score"></star>
+      <div class="support">
+        <h1 class="title">优惠信息</h1>
+        <ul class="support-wrapper">
+          <li class="support-item" v-for="item in seller.supports">
+            <div class="icon" :class="supportClassMap[item.type]"></div>
+            <span class="text">{{item.description}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bulletin">
+        <h1 class="title">商家公告</h1>
+          <p class="text">{{seller.bulletin}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +51,7 @@
 <script>
 import '../../static/iconfont.css'
 import '../assets/css/common.css'
+import star from "@/components/star"
 const ERR_OK = 0
 export default {
   data () {
@@ -54,7 +69,13 @@ export default {
   methods:{
     showDetail(){
       this.detailShow = true
+    },
+    hiddenDetail(){
+      this.detailShow=false
     }
+  },
+  components:{
+    star
   }
 }
 </script>
@@ -185,4 +206,65 @@ export default {
     overflow: auto;
     background-color: rgba(7,17,27,0.8)
   }
+  #header .detail .name{
+    margin-top: 64px;
+    font-size: 16px;
+    font-weight: 700;
+    color:rgb(255,255,255);
+    line-height: 16px;
+    text-align: center;
+  }
+  #header .detail .star{
+    text-align: center;
+    margin:16px 0 28px 0;
+  }
+  #header .detail .support .title{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color:rgb(255,255,255);
+    line-height: 14px;
+  }
+  #header .detail .support .support-wrapper{
+    padding: 24px 36px 28px 36px;
+  }
+  #header .detail .support .support-wrapper .support-item {
+    margin-bottom: 12px;
+    line-height: 24px;
+  }
+  #header .detail .support .support-wrapper .support-item .icon{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 6px;
+    width: 16px;
+    height: 16px;
+    background-size: 16px 16px;
+    background-repeat: no-repeat
+  }
+  #header .detail .support .support-wrapper .support-item .text{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 12px;
+    font-weight: 200;
+    color:rgb(255,255,255);
+    line-height: 24px;
+  }
+  #header .detail .bulletin .title{
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    color:rgb(255,255,255);
+    line-height: 14px;
+  }
+  #header .detail .bulletin .text{
+    margin: 24px 12px 0 12px;
+    font-size: 12px;
+    font-weight: 200;
+    color:rgb(255,255,255);
+    line-height: 24px;
+  }
+
+
+
+
 </style>

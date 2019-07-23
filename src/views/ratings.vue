@@ -100,6 +100,7 @@ export default {
     ratingselect
   },
   mounted(){
+
     this.$http.get('/seller').then((res)=>{
       this.seller = res.body.seller
       this.ratings = res.body.ratings
