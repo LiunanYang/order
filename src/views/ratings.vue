@@ -53,6 +53,7 @@
       </ul>
       <div class="no-rating" v-show="!ratingTotal || !ratingTotal.length">暂无评价</div>
     </div>
+    <shopcart :select-foods="selectFoods"></shopcart>
   </div>
 </template>
 
@@ -60,6 +61,7 @@
 import star from '@/components/star';
 import split from '@/components/split';
 import ratingselect from '@/components/ratingselect';
+import shopcart from '@/components/shopcart';
 import {formatDate} from "@/assets/js/date"
 import "../../static/iconfont.css"
 const POSITIVE = 0
@@ -76,7 +78,8 @@ export default {
         all:"全部",
         positive:"推荐",
         negative:"吐槽"
-      }
+      },
+      selectFoods:[]
     };
   },
   methods:{
@@ -97,13 +100,14 @@ export default {
   components:{
     star,
     split,
-    ratingselect
+    ratingselect,
+    shopcart
   },
   mounted(){
-
     this.$http.get('/seller').then((res)=>{
       this.seller = res.body.seller
       this.ratings = res.body.ratings
+      this.goods = res.body.goods
     })
   },
   computed:{
@@ -113,6 +117,17 @@ export default {
         arr.push(rating)
       })
       return arr
+    },
+    selectFoods(){
+      let foods = []
+      this.goods.forEach((good)=>{
+        good.foods.forEach((food)=>{
+          if(food.count){
+            foods.push(food)
+          }
+        })
+      })
+      return foods
     }
   },
   filters:{

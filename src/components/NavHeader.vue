@@ -20,7 +20,7 @@
         <span class="iconfont icontubiao_xiangyou"></span>
       </div>
     </div>
-    <div class="bulletin-wrapper">
+    <div class="bulletin-wrapper"  @click="showDetail">
       <span class="bulletin-title"></span>
       <span class="bulletin-text">{{seller.bulletin}}</span>
       <span class="iconfont icontubiao_xiangyou"></span>
@@ -52,11 +52,17 @@
 import '../../static/iconfont.css'
 import '../assets/css/common.css'
 import star from "@/components/star"
+import {urlParse} from "@/assets/js/util"
 const ERR_OK = 0
 export default {
   data () {
     return {
-      seller:{},
+      seller:{
+        id:(()=>{
+          let queryParam = urlParse()
+          return queryParam.id 
+        })()
+      },
       supportClassMap:["decrease","discount","special","invoice","guarantee"],
       detailShow:false
     }

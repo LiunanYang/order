@@ -1,14 +1,20 @@
 <!--  -->
 <template>
   <div class='tab'>
-    <div class="tab_item">
-      <router-link to="/" class="a">商品</router-link>
+    <div class="tab_item" >
+      <router-link to="/" class="a" :class="{'a-active':flag==1}" >
+        <span @click="toggle(1)">商品</span>
+      </router-link>
     </div>
     <div class="tab_item">
-      <router-link to="/ratings" class="a">评论</router-link>
+      <router-link to="/ratings" class="a" :class="{'a-active':flag==2}">
+        <span @click="toggle(2)">评论</span>
+      </router-link>
     </div>
     <div class="tab_item">
-      <router-link to="/sellers" class="a">商家</router-link>
+      <router-link to="/sellers" class="a" :class="{'a-active':flag==3}">
+        <span @click="toggle(3)">商家</span>        
+      </router-link>
     </div>
   </div>
 </template>
@@ -18,9 +24,15 @@
 export default {
   data() {
     return {
-
+      flag:1
     };
+  },
+  methods:{
+    toggle(num){
+      this.flag=num
+    }
   }
+
 }
 </script>
 <style>
@@ -40,6 +52,9 @@ export default {
   .a{
     text-decoration: none;
     color: rgb(77,85,93);
-    /* color:rgb(240,20,20); */
+  }
+  .a-active{
+    color:rgb(240,20,20);
   }
 </style>
+
